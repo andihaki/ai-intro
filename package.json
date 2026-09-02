@@ -11,7 +11,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "openai": "^7.9.0",
+    "@mistralai/mistralai": "^2.6.4",
     "tiktoken": "^1.0.22"
   }
 }
