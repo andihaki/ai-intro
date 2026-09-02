@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run index.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,16 @@
   "dependencies": {
     "@mistralai/mistralai": "^2.6.4",
     "tiktoken": "^1.0.22"
-  }
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^10.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
