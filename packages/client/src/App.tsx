@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
-import heroImg from "./assets/hero.png";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import "./App.css";
-import { Button } from "./components/ui/button";
+import { useEffect, useState } from 'react';
+
+import { Button } from './components/ui/button';
+import './App.css';
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch("/api/ping")
+    fetch('/api/ping')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
