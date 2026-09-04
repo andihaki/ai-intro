@@ -9,6 +9,12 @@
 3. batasin scope. supaya AI ga bisa disuruh ngadi-ngadi
 4. jangan percaya 100% ke model. perlu: sanitize n validasi inputan,
 
+## HuggingFace
+
+```bash
+bun add @huggingface/interface
+```
+
 ## coba bikin OnePiece agent
 
 - bikin agent di https://console.mistral.ai/build/playground .
@@ -25,6 +31,9 @@
 bun add -d prisma@7.10.0
 bun add @prisma/client
 bunx prisma init
+bunx prisma migrate dev
+bunx prisma generate
+bunx prisma db seed
 ```
 
 ## connect to db
