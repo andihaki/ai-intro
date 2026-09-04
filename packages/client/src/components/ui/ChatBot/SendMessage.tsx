@@ -1,7 +1,8 @@
 import { FaArrowUp } from 'react-icons/fa';
-import { Button } from '../button';
 import type { KeyboardEvent } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
+
+import { Button } from '../button';
 import type { FormType } from './types';
 
 interface Props {
