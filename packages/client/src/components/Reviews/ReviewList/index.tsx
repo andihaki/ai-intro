@@ -1,71 +1,17 @@
 import { FaHandSparkles } from 'react-icons/fa';
-import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import StarRating from '../StarRating';
+import { reviewsApi } from './reviewsApi';
 
 interface Props {
   productId: number;
 }
 
-type ReviewType = {
-  id: number;
-  author: string;
-  content: string;
-  rating: number;
-  createdAt: string;
-};
-
-type ReviewResponseType = {
-  summary: string | null;
-  reviews: ReviewType[];
-};
-type SummarizeResponseType = {
-  summary: string;
-};
-
 const ReviewList = ({ productId }: Props) => {
-  const { data, isLoading, error } = useQuery<ReviewResponseType>({
-    queryKey: ['reviews', productId],
-    queryFn: async () => {
-      try {
-        const response = await fetch(`/api/products/${productId}/reviews`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-          },
-        });
-        if (!response.ok) {
-          throw new Error(`Oops status: ${response.status}`);
-        }
-
-        return response.json();
-      } catch (error) {
-        throw error;
-      }
-    },
-  });
-
-  const summaryMutation = useMutation<SummarizeResponseType>({
-    mutationKey: ['review-mutation'],
-    mutationFn: async () => {
-      const response = await fetch(
-        `/api/products/${productId}/reviews/summarize`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json;charset=utf-8',
-          },
-        }
-      );
-      if (!response.ok) {
-        throw new Error('Unable to summaries the review');
-      }
-
-      return await response.json();
-    },
-  });
+  const { data, isLoading, error } = reviewsApi.fetchReviews(productId);
+  const summaryMutation = reviewsApi.summarizeReviews(productId);
 
   const handleSummarize = async () => {
     await summaryMutation.mutateAsync();
