@@ -2,7 +2,14 @@ import { useRef, useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
+import popSound from '@/assets/sounds/pop.mp3';
+import notifSound from '@/assets/sounds/notification.mp3';
+
 import type { FormType, MessageType, ChatResponseType } from './types';
+const popAudio = new Audio(popSound);
+popAudio.volume = 0.2;
+const notifAudio = new Audio(notifSound);
+notifAudio.volume = 0.2;
 
 const useChatBot = () => {
   const conversationIdRef = useRef(crypto.randomUUID());
@@ -16,6 +23,7 @@ const useChatBot = () => {
   const onSubmit = handleSubmit(async ({ prompt }: FormType) => {
     setIsLoading(true);
     setError('');
+    popAudio.play();
 
     try {
       setMessages((prev) => [
@@ -48,6 +56,7 @@ const useChatBot = () => {
           role: 'bot',
         },
       ]);
+      notifAudio.play();
 
       messageRef.current?.scrollIntoView({
         behavior: 'smooth',

@@ -1,7 +1,6 @@
 import { Mistral } from '@mistralai/mistralai';
 
 import conversationRepository from '../repositories/conversations.repository';
-import type { ContentChunk } from '@mistralai/mistralai/models/components';
 
 type ChatResponse = {
   id: string;
@@ -21,8 +20,15 @@ const chartService = {
       conversationId,
       prompt
     );
-    const response = await client.chat.complete({
-      model: 'mistral-small-latest',
+
+    const agentId = process.env.MISTRAL_AGENT_ID;
+    if (!agentId)
+      return {
+        id: conversationId,
+        message: 'Oops someting wrong!!!',
+      };
+    const response = await client.agents.complete({
+      agentId,
       messages,
     });
     const content = (response?.choices?.[0]?.message?.content as string) ?? '';
