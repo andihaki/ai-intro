@@ -1,4 +1,4 @@
-import { Skeleton } from '../skeleton';
+import { Skeleton } from '../ui/skeleton';
 import Messages from './Messages';
 import useChatBot from './useChatBot';
 import SendMessage from './SendMessage';

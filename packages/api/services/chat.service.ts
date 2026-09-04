@@ -1,15 +1,10 @@
-import { Mistral } from '@mistralai/mistralai';
-
 import conversationRepository from '../repositories/conversations.repository';
+import client from '../llm/client';
 
 type ChatResponse = {
   id: string;
   message: string;
 };
-
-const client = new Mistral({
-  apiKey: process.env.MISTRAL_API_KEY,
-});
 
 const chartService = {
   async sendMessage(
