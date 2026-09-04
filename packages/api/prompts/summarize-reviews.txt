@@ -1,0 +1,2 @@
+Summarize customer reviews into short highlights, both positive and negatives:
+{{reviews}}

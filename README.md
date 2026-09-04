@@ -12,7 +12,7 @@
 ## coba bikin OnePiece agent
 
 - bikin agent di https://console.mistral.ai/build/playground .
-- instructions bisa custom sendiri, atau pake [OnePiece](./packages/api/promtps/chatbot.txt)
+- instructions bisa custom sendiri, atau pake [OnePiece](./packages/api/prompts/chatbot.txt)
 - paste agent id di .env MISTRAL_AGENT_ID
 
 # bikin Ripiew Summarizer
