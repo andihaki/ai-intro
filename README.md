@@ -14,3 +14,25 @@
 - bikin agent di https://console.mistral.ai/build/playground .
 - instructions bisa custom sendiri, atau pake [OnePiece](./packages/api/promtps/chatbot.txt)
 - paste agent id di .env MISTRAL_AGENT_ID
+
+# bikin Ripiew Summarizer
+
+## run mysql pake docker
+
+## install api dependencies
+
+```bash
+bun add -d prisma@7.10.0
+bun add @prisma/client
+bunx prisma init
+```
+
+## connect to db
+
+di .env tambahin `DATABASE_URL= 'mysql://root:***@localhost:3306/review_summarizer'`
+
+## migrasi db
+
+```bash
+bunx prisma migrate dev
+```
