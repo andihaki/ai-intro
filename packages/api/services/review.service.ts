@@ -14,7 +14,7 @@ export const reviewService = {
     const reviewsString = reviews.map((a) => a.content).join('\n\n');
     const prompt = template.replace('{{reviews}}', reviewsString);
 
-    const response = await llmClient.generateText({ content: prompt });
+    const response = await llmClient.summarizeReview(prompt);
     reviewRepository.storeReviewSummary(productId, response);
 
     return response;
